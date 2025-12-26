@@ -22,7 +22,7 @@ load_dotenv()
 
 app = FastAPI()
 origins = [
-"https://ragytbackend-production-37b6.up.railway.app"
+    "http://locahost:3000"
 ]
 
 app.add_middleware(
