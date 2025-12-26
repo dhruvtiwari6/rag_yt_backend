@@ -22,7 +22,7 @@ load_dotenv()
 
 app = FastAPI()
 origins = [
-    "http://locahost:3000"
+    "http://localhost:3000"
 ]
 
 app.add_middleware(
