@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+faiss-cpu
+numpy
+python-dotenv
+langchain
+langchain-google-genai
+langchain-nvidia-ai-endpoints
+langchain-text-splitters
+langchain-community
+langchain_experimental
