@@ -22,7 +22,8 @@ load_dotenv()
 
 app = FastAPI()
 origins = [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://rag-yt-frontend.vercel.app"
 ]
 
 app.add_middleware(
