@@ -36,6 +36,16 @@ app.add_middleware(
 vectorStore : FAISS | None = None
 history = []
 
+
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "FastAPI backend is running 🚀"
+    }
+
+
+
 @app.post("/ingest")
 def ingest_video(req : IngestRequest):
     global vectorStore
