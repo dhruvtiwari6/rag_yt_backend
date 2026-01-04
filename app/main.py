@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 
 from langchain_community.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -21,18 +22,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
-origins = [
-    "http://localhost:3000",
-    "https://rag-yt-frontend.vercel.app"
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://localhost:3000", "https://rag-yt-frontend.vercel.app"],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["POST", "GET", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
+
 
 vectorStore : FAISS | None = None
 history = []
@@ -46,6 +44,9 @@ def root():
     }
 
 
+# @app.options("/ingest")
+# def ingest_options():
+#     return Response(status_code=200)
 
 @app.post("/ingest")
 def ingest_video(req : IngestRequest):
@@ -77,6 +78,8 @@ def ingest_video(req : IngestRequest):
     
     except Exception as e:
         raise HTTPException(status_code = 400, detail = str(e))
+
+
 
 
 
