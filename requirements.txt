@@ -10,3 +10,4 @@ langchain-text-splitters
 langchain-community
 langchain_experimental
 youtube-transcript-api
+yt-dlp
