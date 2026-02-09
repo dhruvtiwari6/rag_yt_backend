@@ -8,11 +8,10 @@ load_dotenv()
 
 def get_transcript(video_id: str) -> str:
     try:
-        pass = os.getenv("PASS")
         ytt_api =  YouTubeTranscriptApi(
                                 proxy_config=WebshareProxyConfig(
                                     proxy_username="stskfsev",
-                                    proxy_password=PASS
+                                    proxy_password=os.getenv("PASS")
                                 )
                             )
 
